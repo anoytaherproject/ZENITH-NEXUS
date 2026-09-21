@@ -13,11 +13,12 @@
     }
 
     body {
-      min-height: 100vh;
-      background: #05080d;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 20px;
+  min-height: 100vh;
+  background: #05080d;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  padding-bottom: 90px;
     }
 
     .container {
@@ -112,10 +113,25 @@
 
 <div class="card">
   <h2>Account</h2>
-  <p>Status: Active</p>
+  <p>Status: <strong>Active</strong></p>
   <p>Email: Member</p>
 </div>
 
+<div style="
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:15px;
+">
+
+  <div class="card" style="margin:0;">
+    <p style="font-size:13px;">Account Status</p>
+    <h3 style="margin-top:8px;">ACTIVE</h3>
+  </div>
+
+  <div class="card" style="margin:0;">
+    <p style="font-size:13px;">Transactions</p>
+    <h3 style="margin-top:8px;">0</h3>
 <div class="card">
   <h2>Balance</h2>
   <p style="font-size:30px; font-weight:bold; color:#8da9ff;">
@@ -176,5 +192,36 @@
   }
 </script>
 
-</body>
+</body> <div style="
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:10px;
+  background:#0d131c;
+  border-top:1px solid rgba(255,255,255,.12);
+  display:flex;
+  justify-content:space-around;
+  z-index:999;
+">
+  <a href="dashboard.html"
+     style="color:white; text-decoration:none; text-align:center; font-size:12px;">
+    🏠<br>Home
+  </a>
+
+  <a href="profile.html"
+     style="color:white; text-decoration:none; text-align:center; font-size:12px;">
+    👤<br>Profile
+  </a>
+
+  <a href="settings.html"
+     style="color:white; text-decoration:none; text-align:center; font-size:12px;">
+    ⚙️<br>Settings
+  </a>
+
+  <a href="transactions.html"
+     style="color:white; text-decoration:none; text-align:center; font-size:12px;">
+    📋<br>History
+  </a>
+</div>
 </html>
