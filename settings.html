@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - ZENITH NEXUS</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+      background: #05080d;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .card {
+      background: #0d131c;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .setting {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .setting:last-child {
+      border-bottom: none;
+    }
+
+    .setting span {
+      color: #c5ccd8;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      padding: 13px;
+      border-radius: 9px;
+      background: #8da9ff;
+      color: #05080d;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="card">
+      <h1>Account Settings</h1>
+
+      <div class="setting">
+        <span>Email Notifications</span>
+        <input type="checkbox" checked>
+      </div>
+
+      <div class="setting">
+        <span>Security Notifications</span>
+        <input type="checkbox" checked>
+      </div>
+
+      <div class="setting">
+        <span>Dark Mode</span>
+        <input type="checkbox" checked>
+      </div>
+    </div>
+
+    <a href="dashboard.html">
+      ← Back to Dashboard
+    </a>
+
+  </div>
+
+</body>
+</html>
