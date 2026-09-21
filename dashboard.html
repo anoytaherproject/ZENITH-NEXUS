@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - ZENITH NEXUS</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #05080d;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .top {
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      background: #0d131c;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #8da9ff;
+    }
+
+    .welcome {
+      margin-top: 10px;
+      color: #9ca7b8;
+    }
+
+    .card {
+      padding: 24px;
+      background: #0d131c;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #9ca7b8;
+    }
+
+    .logout {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 9px;
+      background: #8da9ff;
+      color: #05080d;
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="top">
+      <div class="logo">
+        ZENITH <span>NEXUS</span>
+      </div>
+
+      <div class="welcome">
+        Welcome to your dashboard
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Dashboard</h2>
+      <p>Selamat datang di ZENITH NEXUS.</p>
+    </div>
+
+    <div class="card">
+      <h2>Account</h2>
+      <p>Status: Member</p>
+    </div>
+
+    <button class="logout" onclick="logout()">
+      LOGOUT
+    </button>
+
+  </div>
+
+  <script>
+    function logout() {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>
