@@ -3,93 +3,909 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zenith Nexus</title>
+
+  <title>Zenith Nexus — The Future of Digital Finance</title>
 
   <style>
+    /* =========================
+       RESET
+    ========================= */
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #070b14;
-      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050810;
+      color: #ffffff;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+      background-size: 45px 45px;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: rgba(70, 120, 255, 0.12);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: -3;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
     nav {
-      padding: 22px;
+      width: 100%;
+      padding: 22px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #202838;
+
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+      background: rgba(5, 8, 16, 0.75);
+      backdrop-filter: blur(15px);
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
-      font-size: 22px;
-      font-weight: bold;
-      letter-spacing: 2px;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 3px;
     }
 
-    .login {
-      color: white;
-      text-decoration: none;
-      border: 1px solid #56627a;
-      padding: 10px 18px;
-      border-radius: 8px;
+    .logo span {
+      color: #8da9ff;
     }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-link {
+      padding: 11px 20px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+
+      font-size: 14px;
+      letter-spacing: 1px;
+
+      transition: 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background: #ffffff;
+      color: #050810;
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       text-align: center;
-      padding: 110px 20px;
+      padding: 100px 20px;
+
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: heroAppear 1.2s ease forwards;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 8px 16px;
+      margin-bottom: 30px;
+
+      border: 1px solid rgba(141,169,255,0.4);
+      border-radius: 50px;
+
+      color: #aabfff;
+      background: rgba(80,110,255,0.08);
+
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      box-shadow: 0 0 25px rgba(80,110,255,0.1);
     }
 
     .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 0.98;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 30px;
+
+      background: linear-gradient(
+        120deg,
+        #ffffff,
+        #b9c8ff,
+        #ffffff
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h1 span {
+      display: block;
     }
 
     .hero p {
-      color: #aab4c8;
-      font-size: 18px;
-      max-width: 600px;
+      max-width: 650px;
       margin: auto;
-      line-height: 1.6;
+
+      color: #9ba7bd;
+
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      margin-top: 40px;
+
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+
+      flex-wrap: wrap;
     }
 
     .button {
       display: inline-block;
-      margin-top: 35px;
-      padding: 15px 30px;
-      background: white;
-      color: #070b14;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
+
+      padding: 16px 30px;
+
+      border-radius: 9px;
+
+      font-weight: 700;
+      letter-spacing: 0.5px;
+
+      transition: all 0.3s ease;
     }
+
+    .button-primary {
+      background: #ffffff;
+      color: #050810;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 10px 40px rgba(255,255,255,0.2);
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #ffffff;
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-4px);
+    }
+
+
+    /* =========================
+       ORBIT
+    ========================= */
+
+    .orbit {
+      position: absolute;
+
+      width: 320px;
+      height: 320px;
+
+      border: 1px solid rgba(130,160,255,0.1);
+      border-radius: 50%;
+
+      animation: rotate 20s linear infinite;
+
+      pointer-events: none;
+    }
+
+    .orbit::before {
+      content: "";
+
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      background: #9db4ff;
+
+      border-radius: 50%;
+
+      top: 0;
+      left: 50%;
+
+      box-shadow:
+        0 0 15px #9db4ff,
+        0 0 35px #567cff;
+    }
+
+
+    /* =========================
+       GENERAL SECTION
+    ========================= */
+
+    section.content-section {
+      padding: 110px 7%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-label {
+      color: #8da9ff;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 55px);
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      color: #8f9bb0;
+      max-width: 650px;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      margin-top: 55px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 30px;
+
+      background: rgba(255,255,255,0.025);
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      border-radius: 16px;
+
+      transition: 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+
+      border-color: rgba(141,169,255,0.35);
+
+      background: rgba(100,130,255,0.05);
+
+      box-shadow:
+        0 15px 50px rgba(0,0,0,0.3);
+    }
+
+    .card-number {
+      font-size: 13px;
+      color: #809aff;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #8e9aae;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+
+    /* =========================
+       HOW IT WORKS
+    ========================= */
+
+    .steps {
+      margin-top: 55px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      padding: 35px;
+
+      border-top: 1px solid rgba(255,255,255,0.15);
+
+      position: relative;
+    }
+
+    .step-number {
+      font-size: 45px;
+      font-weight: bold;
+
+      color: rgba(141,169,255,0.25);
+
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .step p {
+      color: #8e9aae;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      margin-top: 40px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .stat {
+      padding: 30px;
+      text-align: center;
+
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stat strong {
+      display: block;
+
+      font-size: 30px;
+
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: #7f8ba0;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      text-align: center;
+
+      margin: 80px 7%;
+
+      padding: 80px 25px;
+
+      border-radius: 25px;
+
+      border: 1px solid rgba(141,169,255,0.15);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(80,110,255,0.12),
+          transparent 65%
+        );
+
+      box-shadow:
+        inset 0 0 80px rgba(80,110,255,0.03);
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 5vw, 55px);
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: #8f9bb0;
+      margin-bottom: 30px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 35px 7%;
+
+      border-top: 1px solid rgba(255,255,255,0.07);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      color: #69758a;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes heroAppear {
+
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    @keyframes rotate {
+
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 18px 20px;
+      }
+
+      .logo {
+        font-size: 17px;
+        letter-spacing: 2px;
+      }
+
+      .nav-link {
+        padding: 9px 15px;
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 85vh;
+        padding: 80px 20px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 13vw, 65px);
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .orbit {
+        width: 260px;
+        height: 260px;
+      }
+
+      section.content-section {
+        padding: 80px 20px;
+      }
+
+      .about-grid,
+      .steps,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .step {
+        padding: 25px;
+      }
+
+      .cta {
+        margin: 50px 20px;
+        padding: 60px 20px;
+      }
+
+      footer {
+        padding: 30px 20px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
 
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
   <nav>
-    <div class="logo">ZENITH NEXUS</div>
-    <a class="login" href="#">LOGIN</a>
+
+    <div class="logo">
+      ZENITH <span>NEXUS</span>
+    </div>
+
+    <div class="nav-right">
+
+      <a href="#about" class="nav-link">
+        ABOUT
+      </a>
+
+      <a href="#" class="nav-link">
+        LOGIN
+      </a>
+
+    </div>
+
   </nav>
 
-  <section class="hero">
-    <h1>THE FUTURE OF<br>DIGITAL FINANCE</h1>
 
-    <p>
-      Discover a modern digital finance platform
-      designed for the next generation.
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero">
+
+    <div class="orbit"></div>
+
+    <div class="hero-content">
+
+      <div class="badge">
+        NEXT GENERATION FINANCE
+      </div>
+
+      <h1>
+        THE FUTURE OF
+        <span>DIGITAL FINANCE</span>
+      </h1>
+
+      <p>
+        Discover a modern digital finance platform
+        designed for the next generation of users,
+        built around simplicity, technology and
+        a new digital experience.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#how-it-works"
+           class="button button-primary">
+          GET STARTED
+        </a>
+
+        <a href="#about"
+           class="button button-secondary">
+          EXPLORE
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section class="content-section" id="about">
+
+    <div class="section-label">
+      ABOUT ZENITH NEXUS
+    </div>
+
+    <h2 class="section-title">
+      Built for the digital era.
+    </h2>
+
+    <p class="section-description">
+      Zenith Nexus is designed as a modern digital
+      finance experience where technology,
+      accessibility and simplicity come together
+      in one ecosystem.
     </p>
 
-    <a class="button" href="#">GET STARTED</a>
+
+    <div class="about-grid">
+
+      <div class="card">
+
+        <div class="card-number">
+          01 / TECHNOLOGY
+        </div>
+
+        <h3>
+          Digital First
+        </h3>
+
+        <p>
+          A modern interface designed around
+          digital experiences and seamless
+          interaction.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-number">
+          02 / EXPERIENCE
+        </div>
+
+        <h3>
+          Simple & Intuitive
+        </h3>
+
+        <p>
+          Clean interfaces make complex
+          financial experiences easier to
+          understand and navigate.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-number">
+          03 / FUTURE
+        </div>
+
+        <h3>
+          Built to Evolve
+        </h3>
+
+        <p>
+          Designed with a flexible foundation
+          that can grow alongside future
+          digital financial services.
+        </p>
+
+      </div>
+
+    </div>
+
   </section>
+
+
+
+  <!-- =========================
+       HOW IT WORKS
+  ========================== -->
+
+  <section class="content-section" id="how-it-works">
+
+    <div class="section-label">
+      HOW IT WORKS
+    </div>
+
+    <h2 class="section-title">
+      One ecosystem.
+      <br>
+      Simple interaction.
+    </h2>
+
+    <p class="section-description">
+      Zenith Nexus is structured around a simple
+      digital journey.
+    </p>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="step-number">
+          01
+        </div>
+
+        <h3>
+          Create Your Account
+        </h3>
+
+        <p>
+          Register and create your personal
+          Zenith Nexus account.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          02
+        </div>
+
+        <h3>
+          Access Your Dashboard
+        </h3>
+
+        <p>
+          Manage your digital finance experience
+          through a centralized interface.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          03
+        </div>
+
+        <h3>
+          Explore the Ecosystem
+        </h3>
+
+        <p>
+          Discover the tools and services available
+          inside the Zenith Nexus ecosystem.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>01</strong>
+        <span>Digital Ecosystem</span>
+      </div>
+
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>Digital Access</span>
+      </div>
+
+      <div class="stat">
+        <strong>∞</strong>
+        <span>Future Potential</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       CTA
+  ========================== -->
+
+  <section class="cta">
+
+    <h2>
+      Enter the Nexus.
+    </h2>
+
+    <p>
+      The next generation of digital finance starts here.
+    </p>
+
+    <a href="#" class="button button-primary">
+      GET STARTED
+    </a>
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div>
+      © 2026 ZENITH NEXUS
+    </div>
+
+    <div>
+      Digital Finance Ecosystem
+    </div>
+
+  </footer>
+
 
 </body>
 </html>
